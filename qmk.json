@@ -130,6 +130,14 @@
             }
         ],
         [
+            "splitkb/halcyon/lily58/rev2",
+            "my_display",
+            {
+                "HLC_TFT_DISPLAY": "1",
+                "TARGET": "splitkb_halcyon_lily58_rev2_my_display_dual"
+            }
+        ],
+        [
             "splitkb/halcyon/ferris/rev1",
             "vial_hlc",
             {
