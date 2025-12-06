@@ -24,7 +24,7 @@
         [
            "XXXXXXX", "KC_EQL", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX",                         "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "KC_HOME",
            "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX",                        "XXXXXXX", "XXXXXXX"  ,"KC_UP" , "XXXXXXX", "XXXXXXX", "KC_END" ,
-            "_______","RALT(KC_A)","RALT(KC_O)","RALT(KC_E)","RALT(KC_U)", "RALT(KC_I)" ,           "XXXXXXX", "KC_LEFT", "KC_DOWN", "K C_RGHT" ,"XXXXXXX", "XXXXXXX",
+            "_______","RALT(KC_A)","RALT(KC_O)","RALT(KC_E)","RALT(KC_U)", "RALT(KC_I)" ,           "XXXXXXX", "KC_LEFT", "KC_DOWN", "KC_RGHT" ,"XXXXXXX", "XXXXXXX",
             "_______", "_______", "_______", "_______", "_______", "_______", "_______", "_______", "XXXXXXX", "KC_UNDS", "KC_PLUS", "KC_LCBR", "KC_RCBR", "KC_PIPE",
                                              "_______", "_______", "MO(4)"  , "_______", "_______", "MO(4)"  , "_______", "_______",
                                   "_______", "_______", "_______", "_______", "_______", "_______", "_______", "_______", "_______", "_______"
