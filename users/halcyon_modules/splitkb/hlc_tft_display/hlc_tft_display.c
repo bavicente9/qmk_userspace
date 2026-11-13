@@ -206,15 +206,20 @@ void update_display(void) {
         led_usb_state.caps_lock   ? qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 3 - 15, Retron27_underline, caps,   HSV_CAPS_ON,   HSV_BLACK) : qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 3 - 15, Retron27, caps,   HSV_CAPS_OFF,   HSV_BLACK);
         led_usb_state.num_lock    ? qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 2 - 10, Retron27_underline, num,    HSV_NUM_ON,    HSV_BLACK) : qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height * 2 - 10, Retron27, num,    HSV_NUM_OFF,    HSV_BLACK);
 
+        // Borrar la línea antes: QWERTY y DVORAK no miden lo mismo y quedarían restos de la anterior
         const char* layout = get_layout_name();
-        qp_drawtext_recolor(lcd_surface, 5, LCD_HEIGHT - Retron27->line_height - 5, Retron27_underline, layout, HSV_SCROLL_ON, HSV_BLACK);
+        const int16_t layout_y = LCD_HEIGHT - Retron27->line_height - 5;
+        qp_rect(lcd_surface, 0, layout_y, LCD_WIDTH - 1, LCD_HEIGHT - 1, HSV_BLACK, true);
+        qp_drawtext_recolor(lcd_surface, 5, layout_y, Retron27_underline, layout, HSV_SCROLL_ON, HSV_BLACK);
 
         last_led_usb_state = led_usb_state;
         last_default_layer_state = default_layer_state;
         first_run_led = true;
     }
 
-    if(last_layer_state != layer_state || first_run_layer == false) {
+    // También al cambiar QWERTY/Dvorak (DF), que cambia default_layer_state y no layer_state
+    static layer_state_t last_default_for_number = 0;
+    if(last_layer_state != layer_state || last_default_for_number != default_layer_state || first_run_layer == false) {
         switch (get_highest_layer(layer_state|default_layer_state)) {
         case 0:
             layer_number = qp_load_image_mem(gfx_0);
@@ -254,6 +259,7 @@ void update_display(void) {
         }
         qp_close_image(layer_number);
         last_layer_state = layer_state;
+        last_default_for_number = default_layer_state;
         first_run_layer = true;
     }
 }
